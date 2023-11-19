@@ -122,9 +122,9 @@ diff -ur ../src.orig/moby/registry/endpoint_v1.go ./moby/registry/endpoint_v1.go
 -	DefaultRootDir = "/var/lib/containerd"
 +	DefaultRootDir = "@TERMUX_PREFIX@/var/lib/containerd"
  	// DefaultStateDir is the default location used by containerd to store
- 	// transient data
+ 	// transient data, it had to be shortened to fit in a unix socket path with TERMUX_PREFIX
 -	DefaultStateDir = "/run/containerd"
-+	DefaultStateDir = "@TERMUX_PREFIX@/var/run/containerd"
++	DefaultStateDir = "@TERMUX_PREFIX@/var/c"
  	// DefaultAddress is the default unix socket address
 -	DefaultAddress = "/run/containerd/containerd.sock"
 +	DefaultAddress = "@TERMUX_PREFIX@/var/run/containerd/containerd.sock"

@@ -144,5 +144,17 @@ termux_step_create_debscripts() {
 		echo
 		echo 'To check a full list of features needed, run the script:'
 		echo 'https://github.com/moby/moby/blob/master/contrib/check-config.sh'
+
+		SHORT_DIR_PATH="\${TERMUX_PREFIX}/var/c"
+		mkdir -p "\$SHORT_DIR_PATH"
+		cat << EOM > "\${SHORT_DIR_PATH}/ABOUT.md"
+		# Docker Container Runtime Directory
+
+		This directory is used by Docker and containerd for storing container runtime data. 
+		It has been intentionally kept short to avoid issues with UNIX socket path length limitations.
+
+		Please do not modify or delete this directory unless you are changing Docker or containerd configurations.
+		EOM
 	EOF
+	chmod 0755 postinst
 }
